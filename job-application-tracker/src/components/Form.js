@@ -1,4 +1,6 @@
+import { JOB_ROLES } from "../constants";
 import Div from "../utils/dom/Div";
+import { renderJobRoleSuggestions } from "./JobRoleSuggestion";
 
 const Form = () => {
   const form = document.createElement("div");
@@ -71,8 +73,22 @@ const Form = () => {
     </div>
   `;
 
-  const formWrapper = Div("", { "class": "left" })
-  formWrapper.appendChild(form)
+  const formWrapper = Div("", { "class": "left" });
+  formWrapper.appendChild(form);
+
+  const jobRoleInput = form.querySelector('#jobRole');
+  const autocompleteList = form.querySelector('#autocompleteRoles');
+
+  jobRoleInput.addEventListener('input', () => {
+    renderJobRoleSuggestions(jobRoleInput.value, JOB_ROLES);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!autocompleteList.contains(e.target) && e.target !== jobRoleInput) {
+      autocompleteList.classList.add('hidden');
+    }
+  });
+
   return formWrapper;
 };
 

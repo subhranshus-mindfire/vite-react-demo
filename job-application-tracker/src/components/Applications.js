@@ -1,15 +1,24 @@
 import Div from "../utils/dom/Div"
+import Table from "./Table"
 
 const Applications = () => {
-  const applications = Div("", { "class": "right" })
-  applications.innerHTML = `
-    <h2 class="text-center right-heading">Job Applications</h2>
-    <div class="toogle-btn">
-      <input type="button" value="Row" id="row-btn">
-      <input type="button" value="Grid" id="grid-btn" class="active-btn">
-    </div>
-    <ul id="applicationTable" class="grid"></ul>`
-  return applications
-}
+  const wrapper = Div("", { class: "right" });
 
-export default Applications 
+  const heading = document.createElement("h2");
+  heading.className = "text-center right-heading";
+  heading.textContent = "Job Applications";
+
+  const toggle = document.createElement("div");
+  toggle.className = "toogle-btn";
+  toggle.innerHTML = `
+    <input type="button" value="Row" id="row-btn">
+    <input type="button" value="Grid" id="grid-btn" class="active-btn">
+  `;
+
+  wrapper.appendChild(heading);
+  wrapper.appendChild(toggle);
+  wrapper.appendChild(Table());
+  return wrapper;
+};
+
+export default Applications;
