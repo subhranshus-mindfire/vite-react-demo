@@ -1,0 +1,17 @@
+import Counters from './Counters.js';
+import Header from "./Header";
+import Hero from './Hero.js';
+
+export function renderApp() {
+  const root = document.getElementById('app');
+  root.innerHTML = '';
+
+  const layout = document.createElement('div');
+  layout.className = 'app container';
+
+  layout.appendChild(Header());
+  layout.appendChild(Counters());
+  layout.appendChild(Hero())
+
+  root.appendChild(layout);
+}
