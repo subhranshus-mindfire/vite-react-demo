@@ -12,4 +12,4 @@ const Applications = () => {
   return applications
 }
 
-export default Applications
+export default Applications 
