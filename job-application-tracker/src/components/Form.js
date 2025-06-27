@@ -1,4 +1,5 @@
-import { handleJobTypeChange } from "../app.logic";
+import { handleAdd } from "../app.form";
+import { getFormData, handleJobTypeChange, validateForm } from "../app.logic";
 import { JOB_ROLES } from "../constants";
 import Div from "../utils/dom/Div";
 import { renderJobRoleSuggestions } from "./JobRoleSuggestion";
@@ -93,6 +94,11 @@ const Form = () => {
       autocompleteList.classList.add('hidden');
     }
   });
+
+  formWrapper.querySelector("#submit").addEventListener("click", (event) => {
+    event.preventDefault()
+    handleAdd()
+  })
 
   return formWrapper;
 };
