@@ -1,3 +1,4 @@
+import { handleJobTypeChange } from "../app.logic";
 import { JOB_ROLES } from "../constants";
 import Div from "../utils/dom/Div";
 import { renderJobRoleSuggestions } from "./JobRoleSuggestion";
@@ -36,7 +37,7 @@ const Form = () => {
           </select>
           <span class="jobtypeError text-danger hidden">-Job type required</span>
         </div>
-        <div class="input">
+        <div class="input" id="location">
           <label for="locationInput">Location<span class="text-danger">*</span></label>
           <input type="text" name="location" id="locationInput">
           <span class="locationError text-danger hidden">-Location required</span>
@@ -75,6 +76,10 @@ const Form = () => {
 
   const formWrapper = Div("", { "class": "left" });
   formWrapper.appendChild(form);
+
+  formWrapper.querySelector('#jobType').addEventListener('change', () => {
+    handleJobTypeChange(formWrapper)
+  });
 
   const jobRoleInput = form.querySelector('#jobRole');
   const autocompleteList = form.querySelector('#autocompleteRoles');
