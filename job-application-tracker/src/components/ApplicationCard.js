@@ -30,7 +30,17 @@ function ApplicationCard(application, index) {
       </div>
     </div>
   `;
+
+  li.querySelector(`#app-edit-${index}`)?.addEventListener("click", (e) => {
+    e.preventDefault();
+    // your edit logic here
+  });
+
+  li.querySelector(`#app-delete-${index}`)?.addEventListener("click", () => {
+    // your delete logic here
+  });
+
   return li;
 }
 
-export default ApplicationCard
+export default ApplicationCard;

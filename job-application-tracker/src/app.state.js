@@ -1,33 +1,39 @@
-import { renderApp } from "./components/App";
+// import { saveToStorage } from "./app.storage";
+// import { renderApp } from "./components/App";
 
-export const state = {
-  applications: [],
-  view: "",
+// export const state = {
+//   applications: [],
+//   view: "",
+//   isAlertVisible: false,
 
-  setApplications(apps) {
-    this.applications = apps;
-    renderApp();
-  },
+//   setApplications(apps) {
+//     this.applications = apps;
+//     saveToStorage("applications", apps)
+//     renderApp();
+//   },
 
-  setView(view) {
-    if (this.view !== view) {
-      this.view = view;
-      renderApp();
-    }
-  },
+//   setView(view) {
+//     if (this.view !== view) {
+//       this.view = view;
+//       renderApp();
+//     }
+//   },
 
-  addApplication(app) {
-    this.applications.push(app);
-    renderApp();
-  },
+//   setAlert(value) {
+//     if (this.isAlertVisible !== value) {
+//       this.isAlertVisible = value;
+//       renderApp();
+//     }
+//   },
 
-  updateApplication(index, updatedApp) {
-    this.applications[index] = updatedApp;
-    renderApp();
-  },
+// };
 
-  deleteApplication(index) {
-    this.applications.splice(index, 1);
-    renderApp();
-  }
-};
+const state = {};
+
+export function getState(key) {
+  return state[key];
+}
+
+export function setState(key, value) {
+  state[key] = value;
+}

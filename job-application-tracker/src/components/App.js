@@ -1,3 +1,4 @@
+import { getState } from '../app.state.js';
 import Alert from './Alert.js';
 import Counters from './Counters.js';
 import Header from "./Header";
@@ -12,8 +13,11 @@ export function renderApp() {
 
   layout.appendChild(Header());
   layout.appendChild(Counters());
-  layout.appendChild(Hero())
-  layout.append(Alert())
+  layout.appendChild(Hero());
+
+  if (getState("toast")) {
+    layout.append(Alert(getState("toast")));
+  }
 
   root.appendChild(layout);
 }
