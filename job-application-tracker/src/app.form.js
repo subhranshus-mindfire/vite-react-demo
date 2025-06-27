@@ -1,5 +1,6 @@
 import { getFormData, validateForm } from "./app.logic";
 import { state } from "./app.state";
+import showAlert from "./utils/dom/ShowAlert";
 
 export function handleAdd() {
   const formData = getFormData()
@@ -7,4 +8,5 @@ export function handleAdd() {
 
   formData.id = Date.now();
   state.setApplications([...(state.applications), formData])
+  showAlert("Added Successfully")
 }

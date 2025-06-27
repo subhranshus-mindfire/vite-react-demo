@@ -1,3 +1,4 @@
+import Alert from './Alert.js';
 import Counters from './Counters.js';
 import Header from "./Header";
 import Hero from './Hero.js';
@@ -12,6 +13,7 @@ export function renderApp() {
   layout.appendChild(Header());
   layout.appendChild(Counters());
   layout.appendChild(Hero())
+  layout.append(Alert())
 
   root.appendChild(layout);
 }
