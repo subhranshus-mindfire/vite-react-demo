@@ -78,6 +78,13 @@ function ApplicationCard(application, index) {
     };
   };
 
+  function deleteApplication(index) {
+    const apps = getState("applications") || [];
+    apps.splice(index, 1);
+    setState("applications", [...apps]);
+    showAlert("Deleted Successfully")
+  }
+
 
 
   li.innerHTML = `
@@ -117,10 +124,7 @@ function ApplicationCard(application, index) {
   });
 
   li.querySelector(`#app-delete-${index}`).addEventListener("click", () => {
-    const apps = getState("applications") || [];
-    apps.splice(index, 1);
-    setState("applications", [...apps]);
-    // Show Alert
+    deleteApplication(index)
   });
 
   return li;
