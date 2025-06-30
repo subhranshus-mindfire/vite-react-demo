@@ -1,9 +1,10 @@
 import { JOB_ROLES } from "../constants";
 import Div from "../utils/dom/Div";
 import { renderJobRoleSuggestions } from "./JobRoleSuggestion";
-import { setState, getState, observe } from "../app.state";
+import { setState, getState } from "../app.state";
 import { saveToStorage } from "../app.storage";
-import { renderApp } from "./App";
+import { showAlert } from "./Alert";
+import { resetForm } from "../utils/dom/handler";
 
 const Form = () => {
   function handleJobTypeChange(formWrapper) {
@@ -83,7 +84,7 @@ const Form = () => {
     return isValid;
   }
 
-  function handleAdd() {
+  function addApplication() {
     const formData = getFormData()
     if (!validateForm(formData)) return;
 
@@ -91,8 +92,8 @@ const Form = () => {
     console.log("Hiii Before setState")
     saveToStorage("applications", [...(getState("applications")), formData])
     setState("applications", [...(getState("applications")), formData])
-    setState("alert", "Added Successfully")
-    observe("alert", renderApp)
+    showAlert("Added Successfully")
+    resetForm()
     console.log("first")
   }
   const form = document.createElement("div");
@@ -187,7 +188,7 @@ const Form = () => {
 
   formWrapper.querySelector("#submit").addEventListener("click", (event) => {
     event.preventDefault()
-    handleAdd()
+    addApplication()
   })
 
   return formWrapper;

@@ -1,5 +1,6 @@
 import { getState, setState } from '../app.state';
 import { saveToStorage } from '../app.storage';
+import { resetForm } from '../utils/dom/handler';
 import { showAlert } from './Alert';
 
 function ApplicationCard(application, index) {
@@ -32,6 +33,7 @@ function ApplicationCard(application, index) {
       setState("applications", applications);
       // I neeed to do the alert here
       showAlert("Updated Successfully")
+      resetForm()
     }
   }
   const populateForm = () => {
