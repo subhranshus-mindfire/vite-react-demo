@@ -549,6 +549,17 @@ th:hover {
     transition: opacity 0.4s ease, transform 0.4s ease;
     transform: translateY(-20px);
   }
+
+  .modal-content {
+    padding: 20px 40px;
+    min-width: auto;
+    font-size: 18px;
+  }
+
+  .modal-actions button {
+    font-size: 15px;
+  }
+
 }
 
 @media screen and (max-width: 1300px) {
