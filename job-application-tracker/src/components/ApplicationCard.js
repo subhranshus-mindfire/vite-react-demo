@@ -1,5 +1,6 @@
 import { getState, setState } from '../app.state';
 import { saveToStorage } from '../app.storage';
+import { showAlert } from './Alert';
 
 function ApplicationCard(application, index) {
   const li = document.createElement('li');
@@ -30,6 +31,7 @@ function ApplicationCard(application, index) {
       saveToStorage("applications", applications)
       setState("applications", applications);
       // I neeed to do the alert here
+      showAlert("Updated Successfully")
     }
   }
   const populateForm = () => {
