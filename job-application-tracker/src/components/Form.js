@@ -166,6 +166,9 @@ const Form = () => {
     </div>
   `;
 
+  form.querySelector('#applicationDate').max = new Date().toISOString().split('T')[0];
+
+
   const formWrapper = Div("", { "class": "left" });
   formWrapper.appendChild(form);
 
