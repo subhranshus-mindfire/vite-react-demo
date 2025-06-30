@@ -3,6 +3,7 @@ import Alert from './Alert.js';
 import Counters from './Counters.js';
 import Header from "./Header";
 import Hero from './Hero.js';
+import Modal from './Modal.js'
 
 export function renderApp() {
   const root = document.getElementById('app');
@@ -17,6 +18,8 @@ export function renderApp() {
 
   // if (getState("toast")) {
   layout.append(Alert());
+  layout.append(Modal());
+
   // }
 
   root.appendChild(layout);

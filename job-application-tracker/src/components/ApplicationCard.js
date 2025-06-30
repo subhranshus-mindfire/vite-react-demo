@@ -2,6 +2,7 @@ import { getState, setState } from '../app.state';
 import { saveToStorage } from '../app.storage';
 import { resetForm } from '../utils/dom/handler';
 import { showAlert } from './Alert';
+import { showModal } from './Modal';
 
 function ApplicationCard(application, index) {
   const li = document.createElement('li');
@@ -78,15 +79,6 @@ function ApplicationCard(application, index) {
     };
   };
 
-  function deleteApplication(index) {
-    const apps = getState("applications") || [];
-    apps.splice(index, 1);
-    setState("applications", [...apps]);
-    showAlert("Deleted Successfully")
-  }
-
-
-
   li.innerHTML = `
     <div class="application-card-header flex">
       <div class="application-card-header-left">
@@ -124,7 +116,8 @@ function ApplicationCard(application, index) {
   });
 
   li.querySelector(`#app-delete-${index}`).addEventListener("click", () => {
-    deleteApplication(index)
+    setState("deleteIndex", index)
+    showModal(" Are You Sure To Delete ? ")
   });
 
   return li;
