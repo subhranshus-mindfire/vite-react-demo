@@ -90,8 +90,8 @@ const Form = () => {
 
     formData.id = Date.now();
     console.log("Hiii Before setState")
-    saveToStorage("applications", [...(getState("applications")), formData])
-    setState("applications", [...(getState("applications")), formData])
+    saveToStorage("applications", [...((getState("applications")) || []), formData])
+    setState("applications", [...((getState("applications")) || []), formData])
     showAlert("Added Successfully")
     resetForm()
     console.log("first")
