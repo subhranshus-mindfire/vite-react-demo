@@ -1,4 +1,5 @@
 import { getState, setState } from "../app.state";
+import { saveToStorage } from "../app.storage";
 import Div from "../utils/dom/Div";
 import { showAlert } from "./Alert";
 
@@ -21,13 +22,13 @@ const Modal = () => {
   }
 
   function deleteApplication() {
+    console.log("hii")
     const apps = getState("applications") || [];
     const index = getState("deleteIndex")
 
-    if (!index) return
-
     apps.splice(index, 1);
-    setState("applications", [...apps]);
+    setState("applications", apps);
+    saveToStorage("applications", apps)
     showAlert("Deleted Successfully")
   }
 

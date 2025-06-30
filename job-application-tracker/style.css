@@ -372,7 +372,6 @@ th:hover {
   justify-content: center;
   z-index: 10;
   font-size: 30px;
-  border-radius: 5px;
 }
 
 .custom-modal.hidden {
@@ -381,10 +380,16 @@ th:hover {
 
 .modal-content {
   background: white;
-  padding: 20px;
-  border-radius: 6px;
+  padding: 20px 40px;
+  border-radius: 16px;
   min-width: 300px;
   text-align: center;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .modal-actions button {
@@ -544,7 +549,6 @@ th:hover {
     transition: opacity 0.4s ease, transform 0.4s ease;
     transform: translateY(-20px);
   }
-
 }
 
 @media screen and (max-width: 1300px) {

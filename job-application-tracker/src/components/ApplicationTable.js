@@ -1,3 +1,7 @@
+import { setState } from '../app.state';
+import { populateForm } from '../utils/dom/handler';
+import { showModal } from './Modal';
+
 function ApplicationTable(applications) {
   const table = document.createElement('table');
   table.classList.add('application-table');
@@ -21,6 +25,7 @@ function ApplicationTable(applications) {
   applications.forEach((app, index) => {
     const row = document.createElement('tr');
     row.setAttribute("id", `app-${index}`);
+
     row.innerHTML = `
       <td>${app.applicantName}</td>
       <td>${app.companyName}</td>
@@ -34,6 +39,17 @@ function ApplicationTable(applications) {
         </div>
       </td>
     `;
+
+    row.querySelector(`#app-edit-${index}`).addEventListener("click", (e) => {
+      e.preventDefault();
+      populateForm(index, app);
+    });
+
+    row.querySelector(`#app-delete-${index}`).addEventListener("click", () => {
+      setState("deleteIndex", index);
+      showModal("Are you sure you want to delete this application?");
+    });
+
     tbody.appendChild(row);
   });
 
@@ -41,4 +57,4 @@ function ApplicationTable(applications) {
   return table;
 }
 
-export default ApplicationTable
+export default ApplicationTable;
