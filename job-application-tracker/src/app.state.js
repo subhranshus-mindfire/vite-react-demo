@@ -29,6 +29,7 @@
 // };
 
 const state = {};
+const listeners = {};
 
 export function getState(key) {
   return state[key];
@@ -36,4 +37,23 @@ export function getState(key) {
 
 export function setState(key, value) {
   state[key] = value;
+  console.log(state, listeners)
+
+  if (listeners[key]) {
+    listeners[key].forEach((func) => {
+      func()
+    }
+    );
+  }
+}
+
+export function observe(key, func) {
+  if (!listeners[key]) {
+    listeners[key] = [func];
+  }
+  else if (listeners[key] == func)
+    return
+  else {
+    listeners[key].push(func);
+  }
 }

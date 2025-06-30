@@ -1,11 +1,11 @@
 import Div from "../utils/dom/Div"
-import Applications from "./Applications"
+import ApplicationsView from "./ApplicationView"
 import Form from "./Form"
 
 const Hero = () => {
   const hero = Div("", { "class": "grid halfs gap-2" })
   hero.appendChild(Form())
-  hero.appendChild(Applications())
+  hero.appendChild(ApplicationsView())
   return hero
 }
 

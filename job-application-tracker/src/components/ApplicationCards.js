@@ -5,8 +5,8 @@ function ApplicationCards() {
   const list = document.createElement('ul');
   list.id = 'applicationTable';
 
-  const view = getState("view") || "grid";
-  list.className = view === "row" ? "flex" : "grid";
+  const viewType = getState("viewType") || "grid";
+  list.className = viewType === "row" ? "flex" : "grid";
 
   getState("applications")?.forEach((app, index) => {
     list.appendChild(ApplicationCard(app, index));

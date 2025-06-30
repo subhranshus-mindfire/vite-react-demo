@@ -31,13 +31,11 @@ function ApplicationCard(application, index) {
     </div>
   `;
 
-  li.querySelector(`#app-edit-${index}`)?.addEventListener("click", (e) => {
+  li.querySelector(`#app-edit-${index}`).addEventListener("click", (e) => {
     e.preventDefault();
-    // your edit logic here
   });
 
-  li.querySelector(`#app-delete-${index}`)?.addEventListener("click", () => {
-    // your delete logic here
+  li.querySelector(`#app-delete-${index}`).addEventListener("click", () => {
   });
 
   return li;

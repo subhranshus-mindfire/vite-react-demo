@@ -1,8 +1,9 @@
 import { JOB_ROLES } from "../constants";
 import Div from "../utils/dom/Div";
 import { renderJobRoleSuggestions } from "./JobRoleSuggestion";
-import { setState, getState } from "../app.state";
+import { setState, getState, observe } from "../app.state";
 import { saveToStorage } from "../app.storage";
+import { renderApp } from "./App";
 
 const Form = () => {
   function handleJobTypeChange(formWrapper) {
@@ -90,6 +91,8 @@ const Form = () => {
     console.log("Hiii Before setState")
     saveToStorage("applications", [...(getState("applications")), formData])
     setState("applications", [...(getState("applications")), formData])
+    setState("alert", "Added Successfully")
+    observe("alert", renderApp)
     console.log("first")
   }
   const form = document.createElement("div");

@@ -1,19 +1,35 @@
-import Div from "../utils/dom/Div";
-import Table from "./Table";
-import ToggleViewButtons from "./ToggleViewButtons";
+import ApplicationCard from './ApplicationCard.js';
+import ApplicationTable from './ApplicationTable.js';
+import { getState, observe } from '../app.state.js';
 
 const Applications = () => {
-  const wrapper = Div("", { class: "right" });
+  const container = document.createElement('div');
+  container.id = 'applicationTableWrapper';
 
-  const heading = document.createElement("h2");
-  heading.className = "text-center right-heading";
-  heading.textContent = "Job Applications";
+  const render = () => {
+    container.innerHTML = '';
+    const viewType = getState('viewType');
+    const applications = getState('applications') || [];
 
-  wrapper.appendChild(heading);
-  wrapper.appendChild(ToggleViewButtons());
-  wrapper.appendChild(Table());
+    if (viewType === 'row') {
+      container.appendChild(ApplicationTable(applications));
+    } else {
+      const ul = document.createElement('ul');
+      ul.id = 'applicationTable';
+      ul.className = 'grid';
+      applications.forEach((app, index) => {
+        ul.appendChild(ApplicationCard(app, index));
+      });
+      container.appendChild(ul);
+    }
+  };
 
-  return wrapper;
+  render();
+
+  observe('viewType', render);
+  observe('applications', render);
+
+  return container;
 };
 
 export default Applications;

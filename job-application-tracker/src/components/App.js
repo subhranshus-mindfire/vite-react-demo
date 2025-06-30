@@ -15,9 +15,9 @@ export function renderApp() {
   layout.appendChild(Counters());
   layout.appendChild(Hero());
 
-  if (getState("toast")) {
-    layout.append(Alert(getState("toast")));
-  }
+  // if (getState("toast")) {
+  layout.append(Alert());
+  // }
 
   root.appendChild(layout);
 }
